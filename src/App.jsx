@@ -3,7 +3,8 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Preload, useGLTF } from '@react-three/drei';
 import Scene from './Scene';
 
-// kick off model preload
+// Setup the 3D Model website
+
 useGLTF.preload('/models/submerged_era/scene.gltf');
 
 export default function App() {
@@ -14,7 +15,7 @@ export default function App() {
   useEffect(() => {
     bgMusic.current = new Audio('/sounds/Beautiful_Cherry_Blossom.mp3');
     bgMusic.current.loop = true;
-    bgMusic.current.volume = 0.25;
+    bgMusic.current.volume = 0.10;
   }, []);
 
   // this *must* run as part of a click handler

@@ -12,39 +12,59 @@ export default function Scene() {
     });
   }, [scene]);
 
-  // 2) Define your click‐to‐sound groups
+  // 2) Define your click-to-sound groups
   const audioGroups = useMemo(() => ([
     {
       names: new Set(['Object_25', 'Object_71', 'Object_900']),
-      audio: new Audio('public/sounds/Nyan Cat! [Official].mp3')
+      audio: new Audio('/sounds/cat.mp3')
     },
     {
       names: new Set(['Object_42', 'Object_99']),
-      audio: new Audio('public/sounds/Nyan Cat! [Official].mp3')
+      audio: new Audio('/sounds/cat.mp3')
     },
-    // …add more groups as needed
   ]), []);
 
-  // 3) Click handler looks up which group the clicked name lives in
+  // 2a) Combine all interactive names into one set for easy hover checks
+  const hoverNames = useMemo(() => {
+    const all = new Set();
+    audioGroups.forEach(g => g.names.forEach(n => all.add(n)));
+    return all;
+  }, [audioGroups]);
+
+  // 3) Click handler (unchanged)
   const handleClick = e => {
     e.stopPropagation();
     const name = e.object.name;
-    console.log('Clicked on:', name);
-
     for (let group of audioGroups) {
       if (group.names.has(name)) {
         group.audio.currentTime = 0;
-        group.audio.play()
-          .catch(err => console.warn('Audio play failed:', err));
-        return;   // stop after the first match
+        group.audio.play().catch(() => {});
+        return;
       }
     }
-    console.log('No audio mapped for this object.');
+  };
+
+  // 4) Hover handlers toggle the CSS class
+  const handlePointerOver = e => {
+    e.stopPropagation();
+    if (hoverNames.has(e.object.name)) {
+      document.body.classList.add('custom-cursor');
+    }
+  };
+  const handlePointerOut = e => {
+    e.stopPropagation();
+    if (hoverNames.has(e.object.name)) {
+      document.body.classList.remove('custom-cursor');
+    }
   };
 
   return (
     <Suspense fallback={null}>
-      <group onPointerDown={handleClick}>
+      <group
+        onPointerDown={handleClick}
+        onPointerOver={handlePointerOver}
+        onPointerOut={handlePointerOut}
+      >
         <primitive object={scene} />
       </group>
     </Suspense>
