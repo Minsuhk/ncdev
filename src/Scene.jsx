@@ -159,19 +159,34 @@ export default function Scene() {
     {
       title: 'Supplemental Instructor',
       technologies: '',
-      description: 'Built and optimized REST APIs for internal tools.',
-      link: '' 
-    },
-    {
-      title: 'Research Assistant',
-      technologies: 'Python, TensorFlow, PyTorch',
-      description: 'Developed and trained deep learning models for image classification.',
+      description: [
+        '• Provided support for students by hosting bi-weekly study sessions, reinforcing concepts and challenging topics.',
+        '• Simplified C++ topics through group activities and coding exercises, aiding student success.',
+        '• Created reusable lesson plans and activities for use by current and future supplemental instructors.',
+        '• Developed strong communication and teaching skills, honing time management and adaptability.'
+      ],
       link: ''
     },
     {
-      title: 'Teaching Assistant',
-      technologies: 'C++, Java',
-      description: 'Led weekly labs and graded assignments for 200+ students.',
+      title: 'The Coder School Tutor',
+      technologies: '',
+      description:  [
+        "• Instructed aspiring game developers through hands-on coding with Scratch, fostering knowledge in game dev.",
+        "• Facilitated one-on-one coding sessions for K-12 students, improving understanding of programming concepts.",
+        "• Constructed engaging lesson plans to captivate students' interest, ensuring an enjoyable learning experience.",
+        "• Enhanced personalized instruction through collaborative efforts with fellow tutors, incorporating valuable insights from both students and peers' feedback."
+      ],
+      link: ''
+    },
+    {
+      title: 'Computer Science Grader',
+      technologies: '',
+      description: [
+        "• Evaluated and scored 250+ AI and OOP programming assignments each semester, ensuring consistent application of rubric criteria and rapid turnaround of feedback.",
+        "• Designed and maintained automated test suites for core algorithms and object-oriented design exercises, cutting manual validation time by 30%.",
+        "• Partnered with course instructors to refine grading rubrics and lab exercises, clarifying expectations and boosting student satisfaction scores by 15%.", 
+        "• Identified and resolved code defects that improved average student code quality by 20%."
+      ],
       link: ''
     },
     // …add more experience entries as needed…
@@ -225,7 +240,11 @@ function ProjectCarousel({ items }) {
           <p className="carousel-tech">{item.technologies}</p>
         )}
         {item.description && (
-          <p className="carousel-desc">{item.description}</p>
+          Array.isArray(item.description)
+            ? item.description.map((line, i) => (
+                <p key={i} className="carousel-desc">{line}</p>
+              ))
+            : <p className="carousel-desc">{item.description}</p>
         )}
         {body}
       </div>
