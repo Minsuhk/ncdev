@@ -2,49 +2,51 @@
   cursor: url('https://cur.cursors-4u.net/anime/ani-3/ani308.cur'), auto !important;
 }
 
-/* Scene.css */
-.scene-popup-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 50%;
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
+/* cover entire viewport */
+.popup-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
 }
 
-.scene-popup {
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 8px;
-  max-width: 320px;
-  width: 50%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  text-align: center;
+/* centered white box */
+.popup-box {
+    background: #fff;
+    border-radius: 8px;
+    width: 1000px;
+    max-width: 1000px;
+    height: auto;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    position: relative;
+    text-align: center;
+    flex-shrink: 0;      /* <-- add this */
 }
 
-.scene-popup-title {
-  margin: 0 0 1rem;
-  font-size: 1.25rem;
-}
-
-.scene-popup-content {
-  margin: 0 0 1.5rem;
-  font-size: 1rem;
-}
-
-.scene-popup-close {
-  background: #333;
-  color: #fff;
+/* close button in corner */
+.popup-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+  background: none;
+  font-size: 1.2rem;
   cursor: pointer;
 }
 
-.scene-popup-close:hover {
-  background: #555;
+/* title */
+.popup-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* body text */
+.popup-content {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
 }
