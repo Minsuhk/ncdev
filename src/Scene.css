@@ -1,7 +1,9 @@
+/*■ ■ ■ ■ ■ ■ ■ ■ ■ CUSTOM CURSOR ■ ■ ■ ■ ■ ■ ■ ■ ■*/
 .custom-cursor {
   cursor: url('https://cur.cursors-4u.net/anime/ani-3/ani308.cur'), auto !important;
 }
 
+/*■ ■ ■ ■ ■ ■ ■ ■ ■ POPUP BOXES ■ ■ ■ ■ ■ ■ ■ ■ ■*/
 /* cover entire viewport */
 .popup-backdrop {
     position: fixed;
@@ -17,7 +19,7 @@
 .popup-box {
     background: #fff;
     border-radius: 8px;
-    width: 1000px;
+    width: auto;
     max-width: 1000px;
     height: auto;
     padding: 1rem;
@@ -49,4 +51,78 @@
   margin: 0;
   font-size: 0.95rem;
   line-height: 1.4;
+}
+
+/*■ ■ ■ ■ ■ ■ ■ ■ ■ CAROUSEL ■ ■ ■ ■ ■ ■ ■ ■ ■*/
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-nav {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0 0.5rem;
+}
+
+.carousel-item {
+  background: #fafafa;
+  padding: 1rem;
+  border-radius: 6px;
+  width: 260px;
+  text-align: center;
+}
+
+.carousel-image {
+  max-width: 100%;
+  height: auto;
+  margin: 0.5rem 0;
+}
+
+.carousel-tech {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0.25rem 0;
+}
+
+.carousel-desc {
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+
+.carousel-item a {
+  color: #0070f3;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* allow \n in both carousel‐desc and popup‐content to render as line breaks */
+.carousel-desc,
+.popup-content {
+  white-space: pre-wrap;
+}
+
+/* Scene.css */
+
+/* make popup titles much larger */
+.popup-title {
+  font-size: 3rem;       /* adjust up or down as you like */
+  font-weight: 600;      /* optional: make it a bit heavier */
+  color: black;
+}
+
+/* make each carousel item’s <h3> title larger too; project name */
+.carousel-item h3 {
+  font-size: 2.0rem;
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+  color: black;
+}
+
+/* bold the “technologies” line */
+.carousel-tech {
+  font-weight: bold;
 }
