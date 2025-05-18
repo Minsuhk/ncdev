@@ -18,14 +18,14 @@ export default function Scene() {
   // define your clickable groups
   const groups = useMemo(() => [
     {
-      names: new Set(['Object_25','Object_33','Object_30','Object_28','Object_39','Object_36','Object_26']),
+      names: new Set(['Object_25','Object_33','Object_30','Object_28','Object_39','Object_36','Object_26', 'Object_42']),
       title: 'Projects 💻',
-      content: '' // we'll replace this with the carousel
+      content: ''
     },
     {
       names: new Set(['Object_547','Object_553','Object_550','Object_6','Object_9','Object_544','Object_541','Object_10','Object_548','Object_551','Object_554','Object_542','Object_7','Object_301']),
-      title: 'Floating Boat',
-      content: 'A small vessel that gently bobs on the water’s surface.'
+      title: 'About Me',
+      content: ''
     },
     {
       names: new Set(['Object_12']),
@@ -82,14 +82,14 @@ export default function Scene() {
       title: 'Sentimax',
       image: 'public/assets/images/Firefly_13.jpg',
       technologies: 'Tech: HTML, CSS, React, Vite, and more!',
-      description: 'What did you say?\n What could that possibly mean?',
+      description: 'What did you say?/n What could that possibly mean?',
       link: 'https://github.com/ricardogrm02/Sentimax'
     },
     {
       title: 'PokeCheck Website',
       image: 'public/assets/images/pokeball.png',
       technologies: 'Tech: HTML, CSS, JS, PokeAPI',
-      description: "Gotta check 'em all, gotta check 'em all!\n Check on your fav Pokemon on any browser!",
+      description: "Gotta check 'em all, gotta check 'em all!/n Check on your fav Pokemon on any browser!",
       link: 'https://github.com/Minsuhk/PokedexWebsite'
     },
     {
@@ -127,7 +127,28 @@ export default function Scene() {
       description: 'The one-stop site for all your game info needs!',
       link: 'https://github.com/HunterBendel/Moyai'
     },
-    // add more...
+  ];
+
+  const aboutItems = [
+    {
+      title: 'Biography',
+      image: 'public/assets/images/casual_picture_2.jpg',
+      description: "Hi, you found me. I'm Nicholas from SoCal. Get ready to have some fun with my code 🫡.",
+      contacts: [
+        { type: 'linkedin', url: 'https://www.linkedin.com/in/nicholasmchung/', icon: 'public/assets/images/icons8-linkedin.svg' },
+        { type: 'github',   url: 'https://github.com/Minsuhk',  icon: 'public/assets/images/icons8-github.svg'   },
+        { type: 'email',    url: 'mailto: nicholasmchung@gmail.com',      icon: 'public/assets/images/icons8-email-100.png'    },
+      ]
+    },
+    {
+      title: 'Skills',
+      skills: [
+        'C++','C#','Python',
+        'Swift','In-Line x86 ASM','HTML5',
+        'CSS3','JavaScript','R',
+        'React','Flask','Git'
+      ]
+    },
   ];
 
   // simple carousel component
@@ -142,10 +163,41 @@ export default function Scene() {
         <button className="carousel-nav" onClick={prev}>‹</button>
         <div className="carousel-item">
           <h3>{item.title}</h3>
+          
           <img src={item.image} alt={item.title} className="carousel-image" />
           <p className="carousel-tech">{item.technologies}</p>
           <p className="carousel-desc">{item.description}</p>
+
+          {/* This is for the ~About Me~ contacts */}
+          {item.contacts ? (
+            <div className="contact-icons">
+              {item.contacts.map(c => (
+                <a key={c.type} href={c.url} target="_blank" rel="noopener noreferrer">
+                  <img src={c.icon} alt={c.type} className="contact-icon"/>
+                </a>
+              ))}
+            </div>
+          ) : (
           <a href={item.link} target="_blank" rel="noopener noreferrer">Learn More</a>
+          )}
+
+          {/* This is for the ~About Me~ contacts */}
+          {item.skills ? (
+            <div className="skills-grid">
+              {item.skills.map(s => (
+                <span key={s} className="skill-tag">{s}</span>
+              ))}
+            </div>
+          ) : item.contacts ? (
+            <div className="contact-icons">
+            {/* …contacts code… */}
+            </div>
+          ) : (
+            <a href={item.link} /* … */>Learn More</a>
+          )}
+
+
+
         </div>
         <button className="carousel-nav" onClick={next}>›</button>
       </div>
@@ -170,9 +222,14 @@ export default function Scene() {
             <div className="popup-box" onClick={e => e.stopPropagation()}>
               <button className="popup-close" onClick={closePopup}>✕</button>
               <h2 className="popup-title">{popupGroup.title}</h2>
-              {popupGroup.title === 'Projects 💻' ? (
+              {popupGroup.title === 'Projects 💻' && (
                 <ProjectCarousel items={projectItems} />
-              ) : (
+              )}
+              {popupGroup.title === 'About Me' && (
+                <ProjectCarousel items={aboutItems} />
+              )}
+              {(popupGroup.title !== 'Projects 💻' &&
+              popupGroup.title !== 'About Me') && (
                 <p className="popup-content">{popupGroup.content}</p>
               )}
             </div>

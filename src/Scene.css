@@ -126,3 +126,43 @@
 .carousel-tech {
   font-weight: bold;
 }
+
+/*■ ■ ■ ■ ■ ■ ■ ■ ■ ABOUT ME BIO ■ ■ ■ ■ ■ ■ ■ ■ ■*/
+.contact-icons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.contact-icon {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: transform .2s;
+}
+
+.contact-icon:hover {
+  transform: scale(1.1);
+}
+
+/*■ ■ ■ ■ ■ ■ ■ ■ ■ ABOUT ME SKILLS ■ ■ ■ ■ ■ ■ ■ ■ ■*/
+/* replace your .skills-grid definition with this: */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center; /* or space-between, whatever you prefer */
+  margin-top: 1rem;
+}
+
+/* make each tag take up roughly a third of the row */
+.skill-tag {
+  flex: 0 1 calc(33.333% - 0.75rem);
+  background: #ff6b6b;
+  color: #000;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+}
