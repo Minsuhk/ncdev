@@ -139,6 +139,7 @@ export default function Scene() {
         { type: 'linkedin', url: 'https://www.linkedin.com/in/nicholasmchung/', icon: '/assets/images/icons8-linkedin.svg' },
         { type: 'github',   url: 'https://github.com/Minsuhk',  icon: '/assets/images/icons8-github.svg'   },
         { type: 'email',    url: 'mailto: nicholasmchung@gmail.com',      icon: '/assets/images/icons8-email-100.png'    },
+        { type: 'resume',    url: "public/Nick's Resume (Updated 05.05.25) - UpdatedMK.pdf",      icon: '/assets/images/icons8-resume-100.png'    },
       ]
     },
     {
@@ -152,7 +153,7 @@ export default function Scene() {
         'Swift', 'React', 'Flask',
         'Python', 'JavaScript', 'In-Line x86 ASM'
       ]
-    },
+    }
   ];
 
   const experienceItems = [
