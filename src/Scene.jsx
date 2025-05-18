@@ -29,8 +29,8 @@ export default function Scene() {
     },
     {
       names: new Set(['Object_12']),
-      title: 'Clock Tower',
-      content: 'A tall clock tower marking the passage of time.'
+      title: 'Experience',
+      content: ''
     }
   ], []);
 
@@ -155,6 +155,28 @@ export default function Scene() {
     },
   ];
 
+  const experienceItems = [
+    {
+      title: 'Supplemental Instructor',
+      technologies: '',
+      description: 'Built and optimized REST APIs for internal tools.',
+      link: '' 
+    },
+    {
+      title: 'Research Assistant',
+      technologies: 'Python, TensorFlow, PyTorch',
+      description: 'Developed and trained deep learning models for image classification.',
+      link: ''
+    },
+    {
+      title: 'Teaching Assistant',
+      technologies: 'C++, Java',
+      description: 'Led weekly labs and graded assignments for 200+ students.',
+      link: ''
+    },
+    // …add more experience entries as needed…
+  ];
+
   // simple carousel component
 function ProjectCarousel({ items }) {
   const [index, setIndex] = useState(0);
@@ -236,8 +258,12 @@ function ProjectCarousel({ items }) {
               {popupGroup.title === 'About Me' && (
                 <ProjectCarousel items={aboutItems} />
               )}
+              {popupGroup.title === 'Experience' && (
+                <ProjectCarousel items={experienceItems} />
+              )}
               {(popupGroup.title !== 'Projects 💻' &&
-              popupGroup.title !== 'About Me') && (
+                popupGroup.title !== 'About Me' &&
+                popupGroup.title !== 'Experience') && (
                 <p className="popup-content">{popupGroup.content}</p>
               )}
             </div>

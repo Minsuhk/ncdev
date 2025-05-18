@@ -202,3 +202,15 @@
     flex: 1 1 100%;
   }
 }
+
+
+
+.carousel-points {
+  list-style: disc;
+  padding-left: 1.2rem;
+  margin: 1rem 0;
+  text-align: left;
+}
+.carousel-points li {
+  margin-bottom: 0.5rem;
+}
