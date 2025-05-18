@@ -66,8 +66,3 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-
-/* index.css */
-.custom-cursor {
-  cursor: url('https://cur.cursors-4u.net/anime/ani-3/ani308.cur'), auto !important;
-}

@@ -1,6 +1,7 @@
 // Scene.jsx
 import React, { Suspense, useEffect, useMemo } from 'react';
 import { useGLTF } from '@react-three/drei';
+import './Scene.css'
 
 export default function Scene() {
   const { scene } = useGLTF('/models/submerged_era/scene.gltf');
