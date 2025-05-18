@@ -90,14 +90,14 @@ export default function Scene() {
       title: 'Sentimax',
       image: '/assets/images/Firefly_13.jpg',
       technologies: 'Tech: HTML, CSS, React, Vite, and more!',
-      description: 'What did you say?/n What could that possibly mean?',
+      description: 'What did you say?\n What could that possibly mean?',
       link: 'https://github.com/ricardogrm02/Sentimax'
     },
     {
       title: 'PokeCheck Website',
       image: '/assets/images/pokeball.png',
       technologies: 'Tech: HTML, CSS, JS, PokeAPI',
-      description: "Gotta check 'em all, gotta check 'em all!/n Check on your fav Pokemon on any browser!",
+      description: "Gotta check 'em all, gotta check 'em all!\n Check on your fav Pokemon on any browser!",
       link: 'https://github.com/Minsuhk/PokedexWebsite'
     },
     {
