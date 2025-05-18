@@ -39,7 +39,7 @@ export default function App() {
       >
         <ambientLight intensity={0.5} />
         <directionalLight position={[5, 5, 5]} intensity={1} />
-        <group position={[-0.06, 0, 0.02]}>
+        <group position={[-0.06, 0, 0.025]}>{/*This is to adjust the starting position*/}
           <Scene />
         </group>
         <OrbitControls
