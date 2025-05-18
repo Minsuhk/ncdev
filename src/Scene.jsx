@@ -24,13 +24,21 @@ export default function Scene() {
     },
     {
       names: new Set(['Object_547','Object_553','Object_550','Object_6','Object_9','Object_544','Object_541','Object_10','Object_548','Object_551','Object_554','Object_542','Object_7','Object_301']),
-      title: 'About Me',
+      title: 'About Me 🤔',
       content: ''
     },
     {
       names: new Set(['Object_12']),
-      title: 'Experience',
+      title: 'Experience 🤩',
       content: ''
+    },
+    {
+      names: new Set(['Object_427']),
+      title: 'Credits 🙏',
+      content: [
+        "Icons made by Icons8\n",
+        "3D Model made by Omar Faruq Tawsif on Sketchfab\n"
+      ]
     }
   ], []);
 
