@@ -3,6 +3,7 @@
   cursor: url('https://cur.cursors-4u.net/anime/ani-3/ani308.cur'), auto !important;
 }
 
+
 /*■ ■ ■ ■ ■ ■ ■ ■ ■ POPUP BOXES ■ ■ ■ ■ ■ ■ ■ ■ ■*/
 /* cover entire viewport */
 .popup-backdrop {
@@ -52,6 +53,7 @@
   font-size: 0.95rem;
   line-height: 1.4;
 }
+
 
 /*■ ■ ■ ■ ■ ■ ■ ■ ■ CAROUSEL ■ ■ ■ ■ ■ ■ ■ ■ ■*/
 .carousel {
@@ -127,12 +129,14 @@
   font-weight: bold;
 }
 
+
 /*■ ■ ■ ■ ■ ■ ■ ■ ■ ABOUT ME BIO ■ ■ ■ ■ ■ ■ ■ ■ ■*/
 .contact-icons {
   display: flex;
   gap: 1rem;
   justify-content: center;
-  margin-top: 0.5rem;
+  margin-top: 1.0rem;
+  margin-bottom: -1.0rem;
 }
 
 .contact-icon {
@@ -146,23 +150,55 @@
   transform: scale(1.1);
 }
 
+/* make the contact <a> wrappers a little roomier */
+.contact-icons a {
+  display: inline-block;
+}
+
+/* enlarge the SVG/IMG inside each link */
+.contact-icon {
+  width: 48px;            /* was 32px */
+  height: 48px;           /* was 32px */
+  object-fit: contain;    /* in case your SVG or PNG has its own aspect */
+}
+
+
 /*■ ■ ■ ■ ■ ■ ■ ■ ■ ABOUT ME SKILLS ■ ■ ■ ■ ■ ■ ■ ■ ■*/
 /* replace your .skills-grid definition with this: */
-.skills-grid {
+/* Scene.css */
+
+/* container for the Skill pills */
+.skills-flex {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  justify-content: center; /* or space-between, whatever you prefer */
+  gap: 1rem;               /* space between pills */
+  justify-content: center; /* center-align the rows */
   margin-top: 1rem;
 }
 
-/* make each tag take up roughly a third of the row */
+/* each individual Skill pill */
 .skill-tag {
-  flex: 0 1 calc(33.333% - 0.75rem);
+  flex: 0 1 calc(33.333% - 1rem); /* three per row minus the gap */
   background: #ff6b6b;
   color: #000;
   padding: 0.5rem 0.75rem;
   border-radius: 4px;
   text-align: center;
   font-weight: bold;
+  box-sizing: border-box;  /* include padding in the width calc */
+}
+
+/* Optional responsiveness: on very small screens, stack two or one per row */
+/* two per row below 480px: */
+@media (max-width: 480px) {
+  .skill-tag {
+    flex: 0 1 calc(50% - 1rem);
+  }
+}
+
+/* one per row below 320px: */
+@media (max-width: 320px) {
+  .skill-tag {
+    flex: 1 1 100%;
+  }
 }

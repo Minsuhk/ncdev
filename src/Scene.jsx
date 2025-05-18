@@ -80,49 +80,49 @@ export default function Scene() {
   const projectItems = [
     {
       title: 'Sentimax',
-      image: 'public/assets/images/Firefly_13.jpg',
+      image: '/assets/images/Firefly_13.jpg',
       technologies: 'Tech: HTML, CSS, React, Vite, and more!',
       description: 'What did you say?/n What could that possibly mean?',
       link: 'https://github.com/ricardogrm02/Sentimax'
     },
     {
       title: 'PokeCheck Website',
-      image: 'public/assets/images/pokeball.png',
+      image: '/assets/images/pokeball.png',
       technologies: 'Tech: HTML, CSS, JS, PokeAPI',
       description: "Gotta check 'em all, gotta check 'em all!/n Check on your fav Pokemon on any browser!",
       link: 'https://github.com/Minsuhk/PokedexWebsite'
     },
     {
       title: 'CSUF Food Review App',
-      image: 'public/assets/images/csuf_tuffy.png',
+      image: '/assets/images/csuf_tuffy.png',
       technologies: 'Tech: Swift, Firebase, XCode',
       description: 'Feeling hungry at CSUF? Use this app!',
       link: 'https://github.com/CSUF-CPSC223W-2022S/project-group-9'
     },
     {
       title: 'React Personal Website',
-      image: 'public/assets/images/React.png',
+      image: '/assets/images/React.png',
       technologies: 'Tech: HTML, CSS, React, Vite',
       description: 'A website all about me!',
       link: 'https://github.com/Minsuhk/nickchungdev'
     },
     {
       title: 'Fruit Catching Game',
-      image: 'public/assets/images/farmer.png',
+      image: '/assets/images/farmer.png',
       technologies: 'Tech: C#, Unity',
       description: 'Gotta save the cute fruits to save the farm!',
       link: 'https://github.com/Minsuhk/Happy-Farm-Game'
     },
     {
       title: 'T-Rex AI Model',
-      image: 'public/assets/images/trex.png',
+      image: '/assets/images/trex.png',
       technologies: 'Tech: Python, HTML, CSS',
       description: "If we can't get a score of 1000 on the Google T-Rex game, then AI will do it for us!",
       link: 'https://github.com/JustinLieng/CPSC-481-Dino-AI'
     },
     {
       title: 'Moyai Game info Website',
-      image: 'public/assets/images/moyai.png',
+      image: '/assets/images/moyai.png',
       technologies: 'Tech: HTML, CSS, JS, Flask, MongoDB, YouTube API, SteamAPI',
       description: 'The one-stop site for all your game info needs!',
       link: 'https://github.com/HunterBendel/Moyai'
@@ -131,78 +131,86 @@ export default function Scene() {
 
   const aboutItems = [
     {
-      title: 'Biography',
-      image: 'public/assets/images/casual_picture_2.jpg',
+      title: '',
+      image: '/assets/images/casual_picture_2.jpg',
+      technologies: '',
       description: "Hi, you found me. I'm Nicholas from SoCal. Get ready to have some fun with my code 🫡.",
       contacts: [
-        { type: 'linkedin', url: 'https://www.linkedin.com/in/nicholasmchung/', icon: 'public/assets/images/icons8-linkedin.svg' },
-        { type: 'github',   url: 'https://github.com/Minsuhk',  icon: 'public/assets/images/icons8-github.svg'   },
-        { type: 'email',    url: 'mailto: nicholasmchung@gmail.com',      icon: 'public/assets/images/icons8-email-100.png'    },
+        { type: 'linkedin', url: 'https://www.linkedin.com/in/nicholasmchung/', icon: '/assets/images/icons8-linkedin.svg' },
+        { type: 'github',   url: 'https://github.com/Minsuhk',  icon: '/assets/images/icons8-github.svg'   },
+        { type: 'email',    url: 'mailto: nicholasmchung@gmail.com',      icon: '/assets/images/icons8-email-100.png'    },
       ]
     },
     {
       title: 'Skills',
+      image: '',
+      technologies: '',
+      description: '',
       skills: [
-        'C++','C#','Python',
-        'Swift','In-Line x86 ASM','HTML5',
-        'CSS3','JavaScript','R',
-        'React','Flask','Git'
+        'R', 'C#', 'C++',
+        'Git', 'HTML5', 'CSS3',
+        'Swift', 'React', 'Flask',
+        'Python', 'JavaScript', 'In-Line x86 ASM'
       ]
     },
   ];
 
   // simple carousel component
-  function ProjectCarousel({ items }) {
-    const [index, setIndex] = useState(0);
-    const prev = () => setIndex((index + items.length - 1) % items.length);
-    const next = () => setIndex((index + 1) % items.length);
-    const item = items[index];
+function ProjectCarousel({ items }) {
+  const [index, setIndex] = useState(0);
+  const prev = () => setIndex((index + items.length - 1) % items.length);
+  const next = () => setIndex((index + 1) % items.length);
+  const item = items[index];
 
-    return (
-      <div className="carousel">
-        <button className="carousel-nav" onClick={prev}>‹</button>
-        <div className="carousel-item">
-          <h3>{item.title}</h3>
-          
-          <img src={item.image} alt={item.title} className="carousel-image" />
-          <p className="carousel-tech">{item.technologies}</p>
-          <p className="carousel-desc">{item.description}</p>
-
-          {/* This is for the ~About Me~ contacts */}
-          {item.contacts ? (
-            <div className="contact-icons">
-              {item.contacts.map(c => (
-                <a key={c.type} href={c.url} target="_blank" rel="noopener noreferrer">
-                  <img src={c.icon} alt={c.type} className="contact-icon"/>
-                </a>
-              ))}
-            </div>
-          ) : (
-          <a href={item.link} target="_blank" rel="noopener noreferrer">Learn More</a>
-          )}
-
-          {/* This is for the ~About Me~ contacts */}
-          {item.skills ? (
-            <div className="skills-grid">
-              {item.skills.map(s => (
-                <span key={s} className="skill-tag">{s}</span>
-              ))}
-            </div>
-          ) : item.contacts ? (
-            <div className="contact-icons">
-            {/* …contacts code… */}
-            </div>
-          ) : (
-            <a href={item.link} /* … */>Learn More</a>
-          )}
-
-
-
-        </div>
-        <button className="carousel-nav" onClick={next}>›</button>
+  // decide what to render below the text
+  let body = null;
+  if (item.contacts) {
+    body = (
+      <div className="contact-icons">
+        {item.contacts.map(c => (
+          <a key={c.type} href={c.url} target="_blank" rel="noopener noreferrer">
+            <img src={c.icon} alt={c.type} className="contact-icon" />
+          </a>
+        ))}
       </div>
     );
+  } else if (item.skills) {
+    body = (
+      <div className="skills-flex">
+        {item.skills.map(s => (
+          <span key={s} className="skill-tag">{s}</span>
+        ))}
+      </div>
+    );
+  } else if (item.link) {
+    // only projects have `link`, so "Learn More" only appears in the Projects carousel
+    body = (
+      <a href={item.link} target="_blank" rel="noopener noreferrer" className="learn-more">
+        Learn More
+      </a>
+    );
   }
+
+  return (
+    <div className="carousel">
+      <button className="carousel-nav" onClick={prev}>‹</button>
+      <div className="carousel-item">
+        <h3>{item.title}</h3>
+        {item.image && (
+          <img src={item.image} alt={item.title} className="carousel-image" />
+        )}
+        {item.technologies && (
+          <p className="carousel-tech">{item.technologies}</p>
+        )}
+        {item.description && (
+          <p className="carousel-desc">{item.description}</p>
+        )}
+        {body}
+      </div>
+      <button className="carousel-nav" onClick={next}>›</button>
+    </div>
+  );
+}
 
   return (
     <>
