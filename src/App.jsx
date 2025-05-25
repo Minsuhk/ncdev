@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Preload, useGLTF } from '@react-three/drei';
+import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import Scene from './Scene';
 
 // Setup the 3D Model website
@@ -48,6 +49,15 @@ export default function App() {
             console.log('Camera position:', x.toFixed(2), y.toFixed(2), z.toFixed(2));
           }}
         />
+        {/* add bloom postprocessing */}
+        <EffectComposer>
+          <Bloom
+            luminanceThreshold={0}   // everything that is emissive will bloom
+            luminanceSmoothing={0.5} // soften the threshold
+            height={300}             // resolution of blur
+            intensity={1.5}          // strength of bloom
+          />
+        </EffectComposer>
         <Preload all />
       </Canvas>
     </div>

@@ -1,6 +1,7 @@
 // Scene.jsx
 import React, { Suspense, useEffect, useMemo, useState } from 'react';
 import { useGLTF, Html } from '@react-three/drei';
+import * as THREE from 'three';
 import './Scene.css';
 
 export default function Scene() {
@@ -43,6 +44,34 @@ export default function Scene() {
       ]
     }
   ], []);
+
+  // ✨ GLOW EFFECT: tint all meshes in Projects, About Me, and Experience red
+  useEffect(() => {
+    groups.forEach(group => {
+      group.names.forEach(name => {
+        const root = scene.getObjectByName(name);
+        if (!root) return;
+
+        // traverse down in case the named object is a Group
+        root.traverse(child => {
+          if (child.isMesh) {
+            // replace the child’s material with one that has a red emissive channel
+            const oldMat = child.material;
+            const newMat = new THREE.MeshStandardMaterial({
+              map: oldMat.map,
+              color: oldMat.color,
+              emissive: new THREE.Color('silver'),
+              emissiveIntensity: 0.25,    // modest; bloom will amplify it
+              roughness: oldMat.roughness ?? 1.0,
+              metalness: oldMat.metalness ?? 1.0
+            });
+            newMat.needsUpdate = true;
+            child.material = newMat;
+          }
+        });
+      });
+    });
+  }, [scene, groups]);
 
   // flat set for hover detection
   const hoverNames = useMemo(() => {
