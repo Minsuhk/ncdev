@@ -36,8 +36,10 @@ export default function Scene() {
       names: new Set(['Object_427']),
       title: 'Credits 🙏',
       content: [
-        "Icons made by Icons8\n",
-        "3D Model made by Omar Faruq Tawsif on Sketchfab\n"
+        "• Icons made by Icons8\n",
+        "• 3D Model made by Omar Faruq Tawsif on Sketchfab\n",
+        "• Cursor by Julie Davis and Mark Simmons on cursor-4u\n",
+        "• I didn't make any of the cool art stuff\n"
       ]
     }
   ], []);
@@ -283,10 +285,10 @@ function ProjectCarousel({ items }) {
               {popupGroup.title === 'Projects 💻' && (
                 <ProjectCarousel items={projectItems} />
               )}
-              {popupGroup.title === 'About Me' && (
+              {popupGroup.title === 'About Me 🤔' && (
                 <ProjectCarousel items={aboutItems} />
               )}
-              {popupGroup.title === 'Experience' && (
+              {popupGroup.title === 'Experience 🤩' && (
                 <ProjectCarousel items={experienceItems} />
               )}
               {(popupGroup.title !== 'Projects 💻' &&
