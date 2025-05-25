@@ -70,7 +70,10 @@ export default function App() {
         <AnimatedCamera />
 
         {/* still allow manual tweaks if you like */}
-        <OrbitControls enablePan enableZoom />
+        {/* <OrbitControls enablePan enableZoom /> */}
+
+        {/* OrbitControls is disabled so user can’t override the auto‐camera */}
+       <OrbitControls enabled={false} />
 
         <EffectComposer>
           <Bloom
