@@ -1,65 +1,89 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Preload, useGLTF } from '@react-three/drei';
-import { EffectComposer, Bloom } from '@react-three/postprocessing';
-import Scene from './Scene';
+// App.jsx
+import React, { useEffect, useRef, useState } from 'react'
+import { Canvas, useThree, useFrame } from '@react-three/fiber'
+import { OrbitControls, useGLTF } from '@react-three/drei'
+import { EffectComposer, Bloom } from '@react-three/postprocessing'
+import { Vector3 } from 'three'
+import Scene from './Scene'
 
-// Setup the 3D Model website
+// preload your model
+useGLTF.preload('/models/submerged_era/scene.gltf')
 
-useGLTF.preload('/models/submerged_era/scene.gltf');
+function AnimatedCamera() {
+  const { camera } = useThree()
+  // 1) capture the initial camera position once
+  const initialPos = useRef(camera.position.clone())
+  
+  // 2) define your three way‐points (initial + two others)
+  const waypoints = [
+    initialPos.current,
+    new Vector3(-0.17, 0.40, 0.34),  // second angle
+    new Vector3(0.26, 0.43, 0.22)   // third angle
+  ]
+  
+  // index of the current target
+  const [idx, setIdx] = useState(0)
+  
+  // every 10 seconds, move to the next
+  useEffect(() => {
+    const handle = setInterval(() => {
+      setIdx(i => (i + 1) % waypoints.length)
+    }, 10000)
+    return () => clearInterval(handle)
+  }, [])
+  
+  // on each frame lerp toward the current waypoint
+  useFrame((_, delta) => {
+    camera.position.lerp(waypoints[idx], delta * 0.2)
+    camera.lookAt(0, 0, 0)
+  })
+  
+  return null
+}
 
 export default function App() {
-  const bgMusic = useRef(null);
-  const [started, setStarted] = useState(false);
+  const bgMusic = useRef(null)
+  const [started, setStarted] = useState(false)
 
-  // create the Audio object once
   useEffect(() => {
-    bgMusic.current = new Audio('/sounds/Beautiful_Cherry_Blossom.mp3');
-    bgMusic.current.loop = true;
-    bgMusic.current.volume = 0.10;
-  }, []);
+    bgMusic.current = new Audio('/sounds/Beautiful_Cherry_Blossom.mp3')
+    bgMusic.current.loop = true
+    bgMusic.current.volume = 0.1
+  }, [])
 
-  // this *must* run as part of a click handler
   const handleStartMusic = () => {
     if (!started && bgMusic.current) {
-      bgMusic.current.play()
-        .then(() => setStarted(true))
-        .catch(err => console.warn('Playback prevented:', err));
+      bgMusic.current.play().then(() => setStarted(true))
     }
-  };
+  }
 
   return (
-    // full-screen wrapper catches your first click
-    <div
-      style={{ width: '100vw', height: '100vh', position: 'relative' }}
-      onClick={handleStartMusic}
-    >
-      <Canvas
-        style={{ width: '100%', height: '100%' }}
-        camera={{ position: [0.02, 0.52, 0.17], fov: 50 }}
-      >
+    <div style={{ width:'100vw',height:'100vh' }} onClick={handleStartMusic}>
+      <Canvas camera={{ position:[0.02,0.52,0.17], fov:50 }}>
         <ambientLight intensity={0.5} />
-        <directionalLight position={[5, 5, 5]} intensity={1} />
-        <group position={[-0.06, 0, 0.025]}>{/*This is to adjust the starting position*/}
+        <directionalLight position={[5,5,5]} intensity={1} />
+        <group position={[-0.06,0,0.025]}>
           <Scene />
         </group>
-        <OrbitControls
-          onChange={(e) => {
-            const { x, y, z } = e.target.object.position;
-            console.log('Camera position:', x.toFixed(2), y.toFixed(2), z.toFixed(2));
-          }}
-        />
-        {/* add bloom postprocessing */}
+
+        {/* drives the passive camera movement */}
+        <AnimatedCamera />
+
+        {/* still allow manual tweaks if you like */}
+        <OrbitControls enablePan enableZoom />
+
         <EffectComposer>
           <Bloom
-            luminanceThreshold={0}   // everything that is emissive will bloom
-            luminanceSmoothing={0.5} // soften the threshold
-            height={300}             // resolution of blur
-            intensity={1.5}          // strength of bloom
+            luminanceThreshold={0}
+            luminanceSmoothing={0.5}
+            height={300}
+            intensity={1.5}
           />
         </EffectComposer>
-        <Preload all />
+
+        {/* preload all assets */}
+        <primitive object={Scene} />
       </Canvas>
     </div>
-  );
+  )
 }
