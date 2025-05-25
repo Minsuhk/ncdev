@@ -60,10 +60,10 @@ export default function Scene() {
             const newMat = new THREE.MeshStandardMaterial({
               map: oldMat.map,
               color: oldMat.color,
-              emissive: new THREE.Color('silver'),
-              emissiveIntensity: 0.25,    // modest; bloom will amplify it
-              roughness: oldMat.roughness ?? 1.0,
-              metalness: oldMat.metalness ?? 1.0
+              emissive: new THREE.Color('silver'),//gold or silver, both are good colors
+              emissiveIntensity: 0.2,    // modest; bloom will amplify it
+              roughness: oldMat.roughness ?? 0.1,
+              metalness: oldMat.metalness ?? 0.1
             });
             newMat.needsUpdate = true;
             child.material = newMat;
