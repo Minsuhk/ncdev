@@ -23,6 +23,7 @@ a:hover {
 }
 
 body {
+  color: black;
   margin: 0;
   display: flex;
   place-items: center;
