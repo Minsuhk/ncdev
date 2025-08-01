@@ -1,13 +1,14 @@
 // Scene.jsx
-import React, { Suspense, useEffect, useMemo, useState } from 'react';
+import React, { Suspense, useEffect, useMemo, useState, useRef } from 'react';
 import { useGLTF, Html } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import './Scene.css';
 
 export default function Scene() {
   const { scene } = useGLTF('/models/submerged_era/scene.gltf');
   const [popupGroup, setPopupGroup] = useState(null);
-
+  const blinkMats = useRef([]);
   // disable water raycasts
   useEffect(() => {
     ['Object_719','Object_713'].forEach(name => {
@@ -47,6 +48,7 @@ export default function Scene() {
 
   // ✨ GLOW EFFECT: tint all meshes in Projects, About Me, and Experience red
   useEffect(() => {
+    blinkMats.current = [];
     groups.forEach(group => {
       group.names.forEach(name => {
         const root = scene.getObjectByName(name);
@@ -67,12 +69,21 @@ export default function Scene() {
             });
             newMat.needsUpdate = true;
             child.material = newMat;
+            blinkMats.current.push(newMat);
+
           }
         });
       });
     });
   }, [scene, groups]);
-
+  // Pulsing animation
+  // on each frame, pulse the emissiveIntensity up and down
+  useFrame(({ clock }) => {
+    const t = (Math.sin(clock.getElapsedTime() * 1.5) + 1) / 2;   // 0 → 1 → 0 cycle
+    blinkMats.current.forEach(mat => {
+      mat.emissiveIntensity = THREE.MathUtils.lerp(0.1, 0.7, t);
+    });
+  });
   // flat set for hover detection
   const hoverNames = useMemo(() => {
     const s = new Set();

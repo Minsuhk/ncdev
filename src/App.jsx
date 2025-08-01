@@ -56,13 +56,17 @@ export default function App() {
   const updateFovBasedOnWidth = () => {
     const w = window.innerWidth
     if (w <= 320) {
-      setFov(100)      // ultra-small screens
-    } else if (w <= 480) {
+      setFov(90)      // Samsung Galaxy S9+, iPhone 4
+    } else if (w <= 375) {
       setFov(85)      // phone
+    } else if (w <= 430) {
+      setFov(80)      // phone
     } else if (w <= 800) {
       setFov(75)      // tablet / medium
+    } else if (w <= 1000) {
+      setFov(70)      // tablet / medium
     } else if (w <= 1280) {
-      setFov(65)      // tablet / medium
+      setFov(68)      // tablet / medium
     }
     else {
       setFov(50)      // desktop / large
