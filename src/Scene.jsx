@@ -177,6 +177,13 @@ export default function Scene() {
       description: 'The one-stop site for all your game info needs!',
       link: 'https://github.com/HunterBendel/Moyai'
     },
+    {
+      title: 'Char\'s Choice',
+      image: '/assets/images/favicon.png',
+      technologies: 'Tech: HTML, CSS, JS, Next.JS, Tailwind, Typescript, Cheerio, Puppeteer',
+      description: 'Need to know the best Gunpla Prices? Char knows!',
+      link: 'https://github.com/Minsuhk/Gundam-Price'
+    },
   ];
 
   const aboutItems = [
