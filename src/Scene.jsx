@@ -204,7 +204,7 @@ export default function Scene() {
         { type: 'github',   url: 'https://github.com/Minsuhk',                  icon: '/assets/images/icons8-github.svg'   },
         { type: 'email',    url: 'mailto: nicholasmchung@gmail.com',            icon: '/assets/images/icons8-email-100.png'    },
         { type: 'resume',   url: "Nick_s_Resume__Updated_04_24_2026_.pdf",      icon: '/assets/images/icons8-resume-100.png'    },
-        { type: 'cv',       url: "public/Curriculum_Vitae_V5.pdf",              icon: "public/assets/images/curriculum-vitae.png"},
+        { type: 'cv',       url: "Curriculum_Vitae_V5.pdf",              icon: "public/assets/images/curriculum-vitae.png"},
       ]
     },
     {
