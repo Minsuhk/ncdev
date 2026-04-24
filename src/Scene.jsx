@@ -129,6 +129,13 @@ export default function Scene() {
   // your project items
   const projectItems = [
     {
+      title: 'Mindful Cart',
+      image: '/assets/images/MindfulCart_Logo.png',
+      technologies: 'Tech: HTML, CSS, Next.JS, and more!',
+      description: 'Do I really need this? Yes!',
+      link: 'https://github.com/Minsuhk/mindful_cart_website'
+    },
+    {
       title: 'Sentimax',
       image: '/assets/images/Firefly_13.jpg',
       technologies: 'Tech: HTML, CSS, React, Vite, and more!',
@@ -194,9 +201,10 @@ export default function Scene() {
       description: "Hi, you found me. I'm Nicholas from SoCal. Get ready to have some fun with my code 🫡.",
       contacts: [
         { type: 'linkedin', url: 'https://www.linkedin.com/in/nicholasmchung/', icon: '/assets/images/icons8-linkedin.svg' },
-        { type: 'github',   url: 'https://github.com/Minsuhk',  icon: '/assets/images/icons8-github.svg'   },
-        { type: 'email',    url: 'mailto: nicholasmchung@gmail.com',      icon: '/assets/images/icons8-email-100.png'    },
-        { type: 'resume',    url: "Resume.pdf",      icon: '/assets/images/icons8-resume-100.png'    },
+        { type: 'github',   url: 'https://github.com/Minsuhk',                  icon: '/assets/images/icons8-github.svg'   },
+        { type: 'email',    url: 'mailto: nicholasmchung@gmail.com',            icon: '/assets/images/icons8-email-100.png'    },
+        { type: 'resume',   url: "Nick_s_Resume__Updated_04_24_2026_.pdf",      icon: '/assets/images/icons8-resume-100.png'    },
+        { type: 'cv',       url: "public/Curriculum_Vitae_V5.pdf",              icon: "public/assets/images/curriculum-vitae.png"},
       ]
     },
     {
@@ -214,6 +222,16 @@ export default function Scene() {
   ];
 
   const experienceItems = [
+    {
+      title: 'Instructor: Computer Organization & Assembly Language',
+      technologies: '',
+      description: [
+        '• Delivered lectures for an undergraduate course on computer organization and x86 assembly programming using Vistual Studio Community, teaching core topics including registers, memory addressing, instruction sets, and program flow.',
+        '• Designed and administered lectures, programming assignments, quizzes, and exams for a class of approximately 23 students meeting twice per week for 1 hour and 50 minutes.',
+        '• Improved overall student performance and course pass rates through structured instruction, targeted feedback, and hands-on debugging demonstrations.',
+      ],
+      link: ''
+    },
     {
       title: 'Supplemental Instructor',
       technologies: '',
